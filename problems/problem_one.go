@@ -8,8 +8,11 @@ type ProblemOne struct {
 func (p ProblemOne) Solve() int {
 	var answer int
 	for i := 0; i < p.ceiling; i++ {
-		if i%p.factors[0] == 0 || i%p.factors[1] == 0 {
-			answer += i
+		for _, factor := range p.factors {
+			if i%factor == 0 {
+				answer += i
+				break
+			}
 		}
 	}
 	return answer
